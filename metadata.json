@@ -1,0 +1,6 @@
+{
+  "name": "Monika Trzeciak - Trenerka EFT",
+  "description": "Łączę EFT i Matrix Reimprinting z coachingiem. Podczas sesji przyglądamy się temu, co sprawia, że mimo chęci nadal stoisz w miejscu.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

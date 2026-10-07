@@ -1,0 +1,12 @@
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /*?*
+Disallow: /*&
+
+# Prevent crawlers from indexing duplicate internal/dev endpoints
+Disallow: /tmp/
+Disallow: /assets/*.png$
+
+# Official Sitemap
+Sitemap: https://monikatrzeciak.pl/sitemap.xml
