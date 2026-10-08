@@ -18,36 +18,56 @@ import { FAQ } from './components/FAQ.tsx';
 import { FinalCTA } from './components/FinalCTA.tsx';
 import { Footer } from './components/Footer.tsx';
 import { BookingModal } from './components/BookingModal.tsx';
+import { ZencalModal } from './components/ZencalModal.tsx';
 
 export default function App() {
   const [bookingOpen, setBookingOpen] = useState(false);
-  const [bookingType, setBookingType] = useState<'single' | 'package'>('single');
+  const [bookingType, setBookingType] = useState<'single' | 'package'>('package');
+  const [zencalOpen, setZencalOpen] = useState(false);
 
   const handleOpenBooking = (type: 'single' | 'package' = 'single') => {
     setBookingType(type);
-    setBookingOpen(true);
+    setZencalOpen(true);
+  };
+
+  const scrollToOffer = () => {
+    const el = document.getElementById('oferta');
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth' });
+      window.history.pushState(null, '', '#oferta');
+    } else {
+      window.location.hash = '#oferta';
+    }
   };
 
   return (
     <div className="min-h-screen bg-[#261b16] text-[#fcf7f5] flex flex-col font-sans selection:bg-[#fff852] selection:text-[#261b16]">
-      <Header onOpenBooking={() => handleOpenBooking('single')} />
+      <Header onOpenBooking={scrollToOffer} />
 
       <main className="flex-1">
-        <Hero onOpenBooking={() => handleOpenBooking('single')} />
+        <Hero onOpenBooking={scrollToOffer} />
         <ProblemSection />
-        <WhyNothingChanged onOpenBooking={() => handleOpenBooking('single')} />
+        <WhyNothingChanged onOpenBooking={scrollToOffer} />
         <HowIWork />
-        <ForWhom onOpenBooking={() => handleOpenBooking('single')} />
-        <TopicsSection onOpenBooking={() => handleOpenBooking('single')} />
+        <ForWhom onOpenBooking={scrollToOffer} />
+        <TopicsSection onOpenBooking={scrollToOffer} />
         <AboutMe />
         <Testimonials />
         <Pricing onOpenBooking={handleOpenBooking} />
         <FAQ />
-        <FinalCTA onOpenBooking={() => handleOpenBooking('single')} />
+        <FinalCTA onOpenBooking={scrollToOffer} />
       </main>
 
       <Footer />
 
+      {/* Zencal Popup Modal for Single Session & Packages */}
+      <ZencalModal
+        isOpen={zencalOpen}
+        onClose={() => setZencalOpen(false)}
+        initialType={bookingType}
+      />
+
+      {/* Booking Modal for Packages */}
       <BookingModal
         isOpen={bookingOpen}
         onClose={() => setBookingOpen(false)}

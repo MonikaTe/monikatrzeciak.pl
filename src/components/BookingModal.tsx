@@ -85,7 +85,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({
                       : 'bg-white text-[#261b16] border-[#cfbea7]/70'
                   }`}
                 >
-                  <div className="text-xs">Sesja pojedyncza</div>
+                  <div className="text-xs">Pojedyncza sesja EFT</div>
                   <div className="font-serif text-lg font-bold">250 zł</div>
                   <div className="text-[11px] opacity-80">50 minut online</div>
                 </button>
