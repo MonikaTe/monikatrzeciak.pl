@@ -40,11 +40,29 @@ export const Footer: React.FC = () => {
             {/* On mobile: Legal links in one single line above copyright */}
             <div className="flex items-center justify-center gap-2 sm:gap-2.5 order-1 sm:order-2">
               <span className="hidden sm:inline text-[#7d6c5b]">•</span>
-              <a href="#polityka-prywatnosci" className="hover:text-[#fcf7f5] transition-colors">
+              <a
+                href="/polityka-prywatnosci"
+                onClick={(e) => {
+                  e.preventDefault();
+                  window.history.pushState(null, '', '/polityka-prywatnosci');
+                  window.dispatchEvent(new PopStateEvent('popstate'));
+                  window.scrollTo(0, 0);
+                }}
+                className="hover:text-[#fcf7f5] transition-colors"
+              >
                 POLITYKA PRYWATNOŚCI
               </a>
               <span className="text-[#7d6c5b]">•</span>
-              <a href="#regulamin" className="hover:text-[#fcf7f5] transition-colors">
+              <a
+                href="/regulamin"
+                onClick={(e) => {
+                  e.preventDefault();
+                  window.history.pushState(null, '', '/regulamin');
+                  window.dispatchEvent(new PopStateEvent('popstate'));
+                  window.scrollTo(0, 0);
+                }}
+                className="hover:text-[#fcf7f5] transition-colors"
+              >
                 REGULAMIN
               </a>
             </div>
