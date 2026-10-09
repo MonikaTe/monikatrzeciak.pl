@@ -9,7 +9,7 @@ interface HeroProps {
 
 export const Hero: React.FC<HeroProps> = ({ onOpenBooking }) => {
   return (
-    <section className="relative w-full min-h-screen min-h-[100vh] bg-[#261b16] text-[#fcf7f5] overflow-hidden flex flex-col justify-end min-[769px]:justify-center">
+    <section className="relative w-full min-h-screen min-h-[100svh] min-h-[100dvh] bg-[#261b16] text-[#fcf7f5] overflow-hidden flex flex-col justify-end min-[769px]:justify-center">
       {/* Background Graphic using <picture> */}
       <div className="absolute inset-0 z-0 pointer-events-none w-full h-full">
         <picture className="w-full h-full block">
@@ -27,21 +27,24 @@ export const Hero: React.FC<HeroProps> = ({ onOpenBooking }) => {
           />
         </picture>
 
+        {/* Mobile Gradient Overlay so white text is crisp over lower part of newspaper */}
+        <div className="min-[769px]:hidden absolute inset-x-0 bottom-0 h-[65%] bg-gradient-to-t from-[#261b16] via-[#261b16]/80 to-transparent pointer-events-none"></div>
+
         {/* Desktop Left Dark Overlay under text to keep white typography crisp over background */}
         <div className="hidden min-[769px]:block absolute inset-y-0 left-0 w-full min-[769px]:w-3/5 lg:w-1/2 bg-gradient-to-r from-black/35 via-black/15 to-transparent pointer-events-none"></div>
       </div>
 
-      {/* MOBILE HERO CONTENT (Visible on <= 768px) - Positioned at bottom over the photo's natural dark gradient */}
-      <div className="min-[769px]:hidden relative z-10 w-full px-5 pb-16 xs:pb-20 sm:pb-24 pt-20 flex flex-col items-center text-center space-y-4 pointer-events-auto">
+      {/* MOBILE HERO CONTENT (Visible on <= 768px) - Positioned in lower part of newspaper and well above mobile browser bar */}
+      <div className="min-[769px]:hidden relative z-10 w-full px-5 pb-24 xs:pb-28 sm:pb-32 pt-14 flex flex-col items-center text-center space-y-3.5 xs:space-y-4 pointer-events-auto">
         {/* Headline */}
-        <h1 className="font-serif text-[1.85rem] xs:text-[2.1rem] sm:text-[2.35rem] font-medium leading-[1.14] tracking-tight text-white drop-shadow-sm">
+        <h1 className="font-serif text-[1.8rem] xs:text-[2.05rem] sm:text-[2.25rem] font-medium leading-[1.14] tracking-tight text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.7)]">
           Stwórz biznes i życie,
           <br />
           które dają Ci <span className="italic font-normal">wolność.</span>
         </h1>
 
         {/* Subtitle */}
-        <p className="text-[0.9rem] xs:text-[0.95rem] text-[#f4ece4] font-normal leading-[1.5] max-w-[340px] sm:max-w-md mx-auto font-sans drop-shadow-xs">
+        <p className="text-[0.875rem] xs:text-[0.925rem] text-[#f4ece4] font-normal leading-[1.5] max-w-[340px] sm:max-w-md mx-auto font-sans drop-shadow-[0_1px_4px_rgba(0,0,0,0.8)]">
           Sesje EFT online dla kobiet, które
           <br />
           wiedzą, że chcą WIĘCEJ - od życia, od
@@ -52,7 +55,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenBooking }) => {
         </p>
 
         {/* Yellow Button */}
-        <div className="w-full max-w-[320px] pt-1">
+        <div className="w-full max-w-[300px] xs:max-w-[320px] pt-1">
           <button
             type="button"
             onClick={onOpenBooking}
